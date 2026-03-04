@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Is The Baby Here?</title>
+    <title>She's here. Meet Aviv Phoebe.</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👶🏻</text></svg>">
-    <meta name="description" content="The official source of truth on whether Ella & Dan's baby has arrived.">
+    <meta name="description" content="Meet Aviv Phoebe Caspi-Langridge. She's here and everyone is doing wonderfully.">
     <meta name="robots" content="noindex, nofollow">
-    <meta property="og:title" content="Is The Baby Here?">
-    <meta property="og:description" content="Is the Caspi-Langridge baby here yet?">
+    <meta property="og:title" content="She's here. Meet Aviv Phoebe.">
+    <meta property="og:description" content="Meet Aviv Phoebe Caspi-Langridge. She's here and everyone is doing wonderfully.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,7 @@
             --terracotta: #C4704B;
             --sage: #8B9E7E;
             --soft-pink: #E8D5CF;
+            --green: #4E7C5F;
         }
 
         body {
@@ -43,7 +44,7 @@
 
         /* Subtle floating shapes in the background */
         .bg-shape {
-            position: absolute;
+            position: fixed;
             border-radius: 50%;
             opacity: 0.08;
             z-index: 0;
@@ -83,75 +84,149 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            padding: 2rem;
-            max-width: 730px;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            width: 100%;
         }
 
         .question {
             font-family: 'Instrument Serif', serif;
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
             font-weight: 400;
             color: var(--terracotta);
             letter-spacing: 0.02em;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             animation: fade-down 0.8s ease-out both;
         }
 
         .answer {
             font-family: 'Instrument Serif', serif;
-            font-size: clamp(7rem, 22vw, 14rem);
+            font-size: clamp(6rem, 20vw, 12rem);
             font-weight: 400;
             line-height: 0.9;
             letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            color: #4E7C5F;
+            margin-bottom: 2rem;
+            color: var(--green);
             animation: scale-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s both;
         }
 
-        .photo-frame {
-            width: clamp(200px, 50vw, 320px);
-            aspect-ratio: 4/3;
-            margin: 0 auto 2rem;
-            border-radius: 16px;
-            overflow: auto;
-            box-shadow:
-                0 4px 20px rgba(42, 37, 32, 0.08),
-                0 1px 3px rgba(42, 37, 32, 0.06);
-            border: 4px solid white;
-            animation: fade-up 0.8s ease-out 0.5s both;
-            position: relative;
-            background: var(--soft-pink);
+        /* ── Name reveal ── */
+        .name-reveal {
+            animation: fade-up 0.8s ease-out 0.4s both;
+            margin-bottom: 2.5rem;
         }
 
-        .photo-frame img {
+        .name-label {
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--warm-black);
+            opacity: 0.4;
+            margin-bottom: 0.5rem;
+        }
+
+        .name {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--warm-black);
+        }
+
+        /* ── Tooltip words ── */
+        .word-tip {
+            display: inline-block;
+            position: relative;
+            cursor: default;
+            /* Dotted underline to signal interactivity */
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: var(--terracotta);
+            text-underline-offset: 5px;
+            text-decoration-thickness: 2px;
+        }
+
+        .word-tip__bubble {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--warm-black);
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-style: normal;
+            white-space: nowrap;
+            padding: 0.45em 0.85em;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            z-index: 10;
+        }
+
+        /* little triangle */
+        .word-tip__bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--warm-black);
+        }
+
+        .word-tip:hover .word-tip__bubble,
+        .word-tip:focus .word-tip__bubble {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── Photo grid ── */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 10px;
+            margin: 0 auto 2.5rem;
+            animation: fade-up 0.8s ease-out 0.5s both;
+        }
+
+        /* First photo spans two columns, second photo sits beside it */
+        .photo-grid .photo-item:nth-child(1) {
+            grid-column: span 2;
+        }
+
+        .photo-item {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 4px 16px rgba(42, 37, 32, 0.10), 0 1px 3px rgba(42, 37, 32, 0.06);
+            background: var(--soft-pink);
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+
+        .photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        /* Placeholder when no photo yet */
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 7rem;
-        }
-
+        /* ── Subtitle ── */
         .subtitle {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
             color: var(--warm-black);
-            opacity: 0.5;
-            font-style: italic;
-            line-height: 1.6;
+            opacity: 0.65;
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto;
             animation: fade-up 0.8s ease-out 0.7s both;
         }
 
         .footer {
-            margin-top: 2rem;
+            margin-top: 3rem;
             font-size: 0.75rem;
             color: var(--warm-black);
             opacity: 0.3;
@@ -160,6 +235,7 @@
             gap: 0.5rem;
             animation: fade-up 0.8s ease-out 1s both;
             z-index: 1;
+            position: relative;
         }
 
         .rss-link {
@@ -193,6 +269,25 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Touch devices: show tooltip on tap (via focus) */
+        @media (hover: none) {
+            .word-tip__bubble {
+                font-size: 0.8rem;
+                white-space: normal;
+                max-width: 180px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .photo-grid .photo-item:nth-child(1) {
+                grid-column: span 2;
+            }
+        }
     </style>
 </head>
 <body>
@@ -201,17 +296,29 @@
     <div class="bg-shape bg-shape--3"></div>
 
     <main class="container">
-        <p class="question">Is Ella & Dan's baby here yet?</p>
+        <p class="question">Is Ella &amp; Dan's baby here yet?</p>
         <h1 class="answer">She's here.</h1>
 
-        <div class="photo-frame">
-            <!-- Replace the placeholder below with your photo:
-                 <img src="us.jpg" alt="The expecting parents"> -->
-            <div class="photo-placeholder">👶🏻</div>
+        <div class="name-reveal">
+            <p class="name-label">Meet</p>
+            <p class="name">
+                <span class="word-tip" tabindex="0">Aviv<span class="word-tip__bubble">Aviv — noun. Spring, in Hebrew.</span></span>
+                <span class="word-tip" tabindex="0">Phoebe<span class="word-tip__bubble">Phoebe — Ella's very cool great-grandmother.</span></span>
+                Caspi-Langridge
+            </p>
+        </div>
+
+        <div class="photo-grid">
+            <div class="photo-item"><img src="photo1.jpg" alt="Aviv Phoebe"></div>
+            <div class="photo-item"><img src="photo2.jpg" alt="Aviv Phoebe"></div>
+            <div class="photo-item"><img src="photo3.jpg" alt="Aviv Phoebe"></div>
+            <div class="photo-item"><img src="photo4.jpg" alt="Aviv Phoebe"></div>
+            <div class="photo-item"><img src="photo5.jpg" alt="Aviv Phoebe"></div>
         </div>
 
         <p class="subtitle">
-            She's beautiful and everyone is doing very well. We'll share more soon.
+            She arrived on February&nbsp;27th and she's beautiful.
+            Ella, Dan, and Aviv are all doing wonderfully. 💛
         </p>
     </main>
 
