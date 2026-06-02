@@ -25,6 +25,27 @@
 5. **Circle** peaked at a $263.45 close ($298.99 intraday) on June 23, 2025 — roughly $50B+ — before pulling back. The one-month figure is approximate.
 6. **Figma** also had an agreed $20B acquisition by Adobe (Sep 2022), terminated on regulatory grounds in Dec 2023.
 
+## Financials at IPO Time (from S-1/F-1 filings)
+
+| Company | Revenue at IPO | Growth | Profitable? | Net Income / Loss |
+|---|---|---|---|---|
+| **Arm** | $2.68B (FY ended Mar '23) | ~flat (−1%) | ✅ Yes | +$524M |
+| **Instacart** | $2.55B (2022); H1'23 $1.48B | +39% | ✅ Yes | +$428M (2022)ᵃ |
+| **Klaviyo** | $472.7M (2022); H1'23 $320.7M | +63% / +54% | ✅ Barely (newly) | +$15M (H1'23, vs −$49M in 2022) |
+| **Reddit** | $804M (2023) | +21% | ❌ No | −$90.8M |
+| **Rubrik** | $627.9M (FY'24); ARR $784M | +5% rev / +47% ARRᵇ | ❌ No | −$354M |
+| **CoreWeave** | $1.92B (2024) | +737% | ❌ No | −$863M |
+| **Circle** | $1.68B (2024)ᶜ | +16% | ✅ Yes | +$157M |
+| **Chime** | $1.67B (2024); Q1'25 $519M | +30% | ➖ Breakeven | −$25M (2024); +$12.9M Q1'25 |
+| **Figma** | $749M (2024); Q1'25 $228M | +48% / +46% | ➖ Operationallyᵈ | −$732M (2024); +$44.9M Q1'25 |
+
+ᵃ Instacart's 2022 profit was flattered by a ~$358M deferred-tax benefit, but H1 2023 was genuinely profitable too (+$242M).
+ᵇ Rubrik's low revenue growth was a subscription-transition artifact; subscription ARR grew 47%.
+ᶜ Circle's "revenue" is ~96% interest income on USDC reserves — essentially a rates bet, not SaaS revenue.
+ᵈ Figma's 2024 loss was almost entirely a one-time ~$889M stock-comp charge from its May 2024 employee tender; Q1 2025 was profitable.
+
+**Cross-reading with the valuation table:** profitability at IPO had almost no relationship to post-IPO performance. The two biggest money-losers at IPO (CoreWeave −$863M, Rubrik −$354M) are among the best performers since, while profitable Instacart and breakeven Chime/Klaviyo stagnated or fell. The market paid for growth and AI exposure, not earnings.
+
 ## Takeaways
 
 - **Pop-and-fade is the dominant pattern.** Almost every name closed IPO day well above pricing, then gave much of it back within a month (Arm, Instacart, Klaviyo, Reddit, Figma, Chime, Circle all faded; CoreWeave was the exception — flat debut, then up).
